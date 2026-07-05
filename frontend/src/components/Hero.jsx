@@ -32,7 +32,7 @@ export default function Hero() {
             >
               <Sparkles className="w-4 h-4 text-emerald-400" />
               <span className="text-emerald-400 text-sm font-medium">
-                QwenCloud Global AI Hackathon 2026
+                AI-Powered Market Access
               </span>
             </motion.div>
 

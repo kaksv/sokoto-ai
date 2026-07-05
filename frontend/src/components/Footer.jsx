@@ -37,9 +37,7 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-semibold mb-4">Built For</h4>
             <div className="space-y-2">
-              <a href="https://qwencloud.dev" target="_blank" rel="noopener noreferrer" className="block text-sm text-gray-500 hover:text-emerald-400 transition-colors">
-                QwenCloud Global AI Hackathon 2026
-              </a>
+              <span className="block text-sm text-gray-500">QwenCloud Global AI Hackathon 2026</span>
               <span className="block text-sm text-gray-500">Ugandan Smallholder Farmers</span>
               <span className="block text-sm text-gray-500">Sustainable Agriculture</span>
             </div>
