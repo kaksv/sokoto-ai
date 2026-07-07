@@ -1,5 +1,6 @@
+import React from 'react'
 import { motion } from 'framer-motion'
-import { Cpu, Globe, Database, Shield, ArrowDown, Server, Phone } from 'lucide-react'
+import { Cpu, Globe, ArrowDown, Server, Phone } from 'lucide-react'
 
 const layers = [
   {
@@ -48,20 +49,13 @@ const layers = [
   },
 ]
 
-const flowSteps = [
-  { icon: Phone, label: 'Farmer dials *347*1#', color: 'emerald' },
-  { icon: Globe, label: 'AT gateway routes request', color: 'blue' },
-  { icon: Server, label: 'Express processes session', color: 'purple' },
-  { icon: Cpu, label: 'QwenCloud AI analyzes', color: 'emerald' },
-  { icon: Database, label: 'Market data returned', color: 'amber' },
-  { icon: Shield, label: 'Response sent via USSD', color: 'emerald' },
-]
-
 export default function Architecture() {
-  const handleDownload = () => {
+  const [diagram, setDiagram] = React.useState('architecture');
+
+  const handleDownload = (file, name) => {
     const link = document.createElement('a');
-    link.href = '/architecture-diagram.svg';
-    link.download = 'sokoagent-architecture.svg';
+    link.href = file;
+    link.download = name;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -99,36 +93,97 @@ export default function Architecture() {
           </p>
         </motion.div>
 
-        {/* Architecture Diagram Image */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-12"
-        >
-          <div className="bg-gray-900/30 border border-gray-800 rounded-2xl p-6 hover:border-emerald-500/30 transition-all duration-300">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-bold text-white">Full System Architecture</h3>
-              <button
-                onClick={handleDownload}
-                className="flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-lg text-emerald-400 text-sm font-medium hover:bg-emerald-500/20 transition-all"
-              >
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-                Download SVG
-              </button>
+        {/* Diagram Tabs */}
+        <div className="flex items-center justify-center gap-3 mb-8">
+          <button
+            onClick={() => setDiagram('architecture')}
+            className={`px-5 py-2.5 rounded-lg text-sm font-semibold transition-all ${
+              diagram === 'architecture'
+                ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-500/20'
+                : 'bg-gray-800 text-gray-400 hover:text-gray-200'
+            }`}
+          >
+            <Cpu className="w-4 h-4 inline mr-1.5 -mt-0.5" />
+            System Architecture
+          </button>
+          <button
+            onClick={() => setDiagram('process')}
+            className={`px-5 py-2.5 rounded-lg text-sm font-semibold transition-all ${
+              diagram === 'process'
+                ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-500/20'
+                : 'bg-gray-800 text-gray-400 hover:text-gray-200'
+            }`}
+          >
+            <ArrowDown className="w-4 h-4 inline mr-1.5 -mt-0.5" />
+            Process Flow
+          </button>
+        </div>
+
+        {/* Architecture Diagram */}
+        {diagram === 'architecture' && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-8"
+          >
+            <div className="bg-gray-900/30 border border-gray-800 rounded-2xl p-6 hover:border-emerald-500/30 transition-all duration-300">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-lg font-bold text-white">Full System Architecture</h3>
+                <button
+                  onClick={() => handleDownload('/architecture-diagram.svg', 'sokoagent-architecture.svg')}
+                  className="flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-lg text-emerald-400 text-sm font-medium hover:bg-emerald-500/20 transition-all"
+                >
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  Download SVG
+                </button>
+              </div>
+              <div className="bg-gray-950 rounded-xl overflow-hidden border border-gray-800/50">
+                <img
+                  src="/architecture-diagram.svg"
+                  alt="SokoAgent AI System Architecture"
+                  className="w-full h-auto"
+                  style={{ minHeight: '400px' }}
+                />
+              </div>
             </div>
-            <div className="bg-gray-950 rounded-xl overflow-hidden border border-gray-800/50">
-              <img
-                src="/architecture-diagram.svg"
-                alt="SokoAgent AI System Architecture"
-                className="w-full h-auto"
-                style={{ minHeight: '400px' }}
-              />
+          </motion.div>
+        )}
+
+        {/* Process Flow Diagram */}
+        {diagram === 'process' && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-8"
+          >
+            <div className="bg-gray-900/30 border border-gray-800 rounded-2xl p-6 hover:border-emerald-500/30 transition-all duration-300">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-lg font-bold text-white">End-to-End Process Flow</h3>
+                <button
+                  onClick={() => handleDownload('/process-flow-diagram.svg', 'sokoagent-process-flow.svg')}
+                  className="flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-lg text-emerald-400 text-sm font-medium hover:bg-emerald-500/20 transition-all"
+                >
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  Download SVG
+                </button>
+              </div>
+              <div className="bg-gray-950 rounded-xl overflow-hidden border border-gray-800/50">
+                <img
+                  src="/process-flow-diagram.svg"
+                  alt="SokoAgent AI Process Flow"
+                  className="w-full h-auto"
+                  style={{ minHeight: '500px' }}
+                />
+              </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        )}
 
         {/* Architecture Layers */}
         <div className="grid md:grid-cols-4 gap-4 mb-20">
@@ -177,31 +232,6 @@ export default function Architecture() {
             </motion.div>
           ))}
         </div>
-
-        {/* Data Flow Visualization */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="bg-gray-900/30 border border-gray-800 rounded-2xl p-8 mb-12"
-        >
-          <h3 className="text-xl font-bold text-white mb-6 text-center">Request Flow</h3>
-          <div className="grid grid-cols-2 md:grid-cols-6 gap-3">
-            {flowSteps.map((step, index) => (
-              <div key={index} className="relative">
-                <div className="bg-gray-950 rounded-xl p-4 text-center border border-gray-800/50 hover:border-emerald-500/20 transition-all duration-200">
-                  <step.icon className={`w-6 h-6 mx-auto mb-2 text-${step.color}-400`} />
-                  <div className="text-xs text-gray-400 leading-tight">{step.label}</div>
-                </div>
-                {index < flowSteps.length - 1 && (
-                  <div className="hidden md:block absolute -right-2 top-1/2 -translate-y-1/2">
-                    <ArrowDown className="w-4 h-4 text-gray-600 rotate-[-90deg]" />
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </motion.div>
 
         {/* Tech Stack Badges */}
         <motion.div

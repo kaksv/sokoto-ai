@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" style="background:#0f172a;font-family:'Inter','Segoe UI',sans-serif">
+  <defs>
+    <filter id="glow"><feGaussianBlur stdDeviation="2" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="shadow"><feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.3"/></filter>
+    <marker id="arrGreen" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#10b981"/></marker>
+    <marker id="arrBlue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#3b82f6"/></marker>
+    <marker id="arrAmber" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#f59e0b"/></marker>
+    <marker id="arrPurple" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#8b5cf6"/></marker>
+    <marker id="arrRed" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ef4444"/></marker>
+  </defs>
+
+  <rect width="1200" height="900" fill="#0f172a"/>
+
+  <!-- Title -->
+  <rect x="300" y="20" width="600" height="50" rx="25" fill="#05966920" stroke="#05966950" stroke-width="1"/>
+  <text x="600" y="52" text-anchor="middle" fill="#10b981" font-size="22" font-weight="700" letter-spacing="2">SOKOAGENT AI — PROCESS FLOW</text>
+
+  <!-- ============================================ -->
+  <!-- STEP 1: FARMER DIALS USSD -->
+  <!-- ============================================ -->
+  <rect x="50" y="95" width="110" height="26" rx="13" fill="#10b98120" stroke="#10b98140" stroke-width="1"/>
+  <text x="105" y="113" text-anchor="middle" fill="#10b981" font-size="11" font-weight="600">STEP 1: INPUT</text>
+
+  <rect x="50" y="130" width="240" height="100" rx="12" fill="#1e293b" stroke="#05966940" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="170" y="158" text-anchor="middle" fill="#34d399" font-size="14" font-weight="700">Farmer Dials *347*1#</text>
+  <text x="170" y="180" text-anchor="middle" fill="#94a3b8" font-size="11">Feature phone sends USSD request</text>
+  <text x="170" y="198" text-anchor="middle" fill="#64748b" font-size="10">No internet or smartphone needed</text>
+  <text x="170" y="218" text-anchor="middle" fill="#64748b" font-size="10">Works on any GSM network</text>
+
+  <!-- Arrow 1→2 -->
+  <line x1="290" y1="180" x2="350" y2="180" stroke="#f59e0b" stroke-width="2.5" marker-end="url(#arrAmber)" filter="url(#glow)"/>
+  <text x="320" y="170" text-anchor="middle" fill="#f59e0b" font-size="9">USSD</text>
+
+  <!-- ============================================ -->
+  <!-- STEP 2: AFRICA'S TALKING ROUTES -->
+  <!-- ============================================ -->
+  <rect x="50" y="250" width="110" height="26" rx="13" fill="#f59e0b20" stroke="#f59e0b40" stroke-width="1"/>
+  <text x="105" y="268" text-anchor="middle" fill="#f59e0b" font-size="11" font-weight="600">STEP 2: ROUTE</text>
+
+  <rect x="350" y="130" width="240" height="100" rx="12" fill="#1e293b" stroke="#f59e0b40" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="470" y="158" text-anchor="middle" fill="#fbbf24" font-size="14" font-weight="700">Africa's Talking Gateway</text>
+  <text x="470" y="180" text-anchor="middle" fill="#94a3b8" font-size="11">Receives USSD session request</text>
+  <text x="470" y="198" text-anchor="middle" fill="#94a3b8" font-size="11">Routes to backend via HTTP webhook</text>
+  <text x="470" y="218" text-anchor="middle" fill="#64748b" font-size="10">POST /ussd → Express.js</text>
+
+  <!-- Arrow 2→3 -->
+  <line x1="590" y1="180" x2="650" y2="180" stroke="#3b82f6" stroke-width="2.5" marker-end="url(#arrBlue)" filter="url(#glow)"/>
+  <text x="620" y="170" text-anchor="middle" fill="#3b82f6" font-size="9">HTTP</text>
+
+  <!-- ============================================ -->
+  <!-- STEP 3: EXPRESS BACKEND -->
+  <!-- ============================================ -->
+  <rect x="50" y="405" width="110" height="26" rx="13" fill="#3b82f620" stroke="#3b82f640" stroke-width="1"/>
+  <text x="105" y="423" text-anchor="middle" fill="#3b82f6" font-size="11" font-weight="600">STEP 3: PROCESS</text>
+
+  <rect x="650" y="100" width="500" height="160" rx="12" fill="#1e293b" stroke="#3b82f640" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="900" y="128" text-anchor="middle" fill="#60a5fa" font-size="14" font-weight="700">Express.js Backend (Render)</text>
+  <line x1="670" y1="138" x2="1130" y2="138" stroke="#3b82f620" stroke-width="1"/>
+
+  <!-- Sub-steps inside backend -->
+  <rect x="670" y="150" width="140" height="50" rx="6" fill="#0f172a" stroke="#3b82f640" stroke-width="1"/>
+  <text x="740" y="172" text-anchor="middle" fill="#94a3b8" font-size="10" font-weight="600">3a. USSD Router</text>
+  <text x="740" y="190" text-anchor="middle" fill="#64748b" font-size="9">Parse request body</text>
+
+  <rect x="825" y="150" width="140" height="50" rx="6" fill="#0f172a" stroke="#3b82f640" stroke-width="1"/>
+  <text x="895" y="172" text-anchor="middle" fill="#94a3b8" font-size="10" font-weight="600">3b. Session Manager</text>
+  <text x="895" y="190" text-anchor="middle" fill="#64748b" font-size="9">Track user state</text>
+
+  <rect x="980" y="150" width="150" height="50" rx="6" fill="#0f172a" stroke="#3b82f640" stroke-width="1"/>
+  <text x="1055" y="172" text-anchor="middle" fill="#94a3b8" font-size="10" font-weight="600">3c. Agent Controller</text>
+  <text x="1055" y="190" text-anchor="middle" fill="#64748b" font-size="9">Prepare AI request</text>
+
+  <!-- Decision diamond -->
+  <rect x="750" y="215" width="300" height="35" rx="6" fill="#0f172a" stroke="#f59e0b40" stroke-width="1"/>
+  <text x="900" y="237" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="600">Decision: Level 1 (menu) or Level 2 (input)?</text>
+
+  <!-- Arrow 3→4 (AI call) -->
+  <path d="M 900 260 L 900 310" stroke="#10b981" stroke-width="2.5" marker-end="url(#arrGreen)" filter="url(#glow)"/>
+  <text x="920" y="290" text-anchor="start" fill="#10b981" font-size="9">LLM API Call (qwen-max)</text>
+
+  <!-- ============================================ -->
+  <!-- STEP 4: QWENCLOUD AI -->
+  <!-- ============================================ -->
+  <rect x="50" y="560" width="110" height="26" rx="13" fill="#05966920" stroke="#05966940" stroke-width="1"/>
+  <text x="105" y="578" text-anchor="middle" fill="#10b981" font-size="11" font-weight="600">STEP 4: AI</text>
+
+  <rect x="650" y="310" width="500" height="200" rx="12" fill="#0f172a" stroke="#05966940" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="900" y="338" text-anchor="middle" fill="#34d399" font-size="14" font-weight="700">QwenCloud AI (DashScope)</text>
+  <line x1="670" y1="348" x2="1130" y2="348" stroke="#05966920" stroke-width="1"/>
+
+  <!-- AI sub-steps -->
+  <rect x="670" y="360" width="220" height="60" rx="6" fill="#0f172a" stroke="#05966940" stroke-width="1"/>
+  <text x="780" y="382" text-anchor="middle" fill="#94a3b8" font-size="10" font-weight="600">4a. NLU Engine</text>
+  <text x="780" y="400" text-anchor="middle" fill="#64748b" font-size="9">Parses: "Beans 5 bags"</text>
+  <text x="780" y="414" text-anchor="middle" fill="#64748b" font-size="9">→ crop: beans, volume: 5 bags</text>
+
+  <rect x="910" y="360" width="220" height="60" rx="6" fill="#0f172a" stroke="#05966940" stroke-width="1"/>
+  <text x="1020" y="382" text-anchor="middle" fill="#94a3b8" font-size="10" font-weight="600">4b. Autopilot Agent</text>
+  <text x="1020" y="400" text-anchor="middle" fill="#64748b" font-size="9">Decides which tools to call</text>
+  <text x="1020" y="414" text-anchor="middle" fill="#64748b" font-size="9">Selects: get_market_price + find_buyers</text>
+
+  <!-- Tool call arrow (back to backend) -->
+  <path d="M 1130 390 Q 1160 390 1160 240 Q 1160 200 1130 200" fill="none" stroke="#64748b" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrGray)"/>
+  <text x="1175" y="300" text-anchor="middle" fill="#64748b" font-size="8" transform="rotate(90,1175,300)">Tool Execution</text>
+
+  <!-- Tool execution box -->
+  <rect x="650" y="435" width="220" height="60" rx="6" fill="#0f172a" stroke="#8b5cf640" stroke-width="1"/>
+  <text x="760" y="457" text-anchor="middle" fill="#a78bfa" font-size="10" font-weight="600">4c. Tool: get_market_price</text>
+  <text x="760" y="475" text-anchor="middle" fill="#64748b" font-size="9">Returns: UGX 3,200/kg for beans</text>
+
+  <rect x="890" y="435" width="240" height="60" rx="6" fill="#0f172a" stroke="#8b5cf640" stroke-width="1"/>
+  <text x="1010" y="457" text-anchor="middle" fill="#a78bfa" font-size="10" font-weight="600">4d. Tool: find_buyers</text>
+  <text x="1010" y="475" text-anchor="middle" fill="#64748b" font-size="9">Returns: Buyer A (3,100), Buyer B (3,150)</text>
+
+  <!-- Response generation -->
+  <rect x="670" y="505" width="460" height="35" rx="6" fill="#0f172a" stroke="#10b98140" stroke-width="1"/>
+  <text x="900" y="527" text-anchor="middle" fill="#34d399" font-size="10" font-weight="600">4e. Response Generation — Formats USSD reply (under 140 chars)</text>
+
+  <!-- Arrow: AI → Backend (response) -->
+  <path d="M 900 540 L 900 570 L 300 570 L 300 230" fill="none" stroke="#10b981" stroke-width="2.5" marker-end="url(#arrGreen)" filter="url(#glow)"/>
+  <text x="600" y="568" text-anchor="middle" fill="#10b981" font-size="9">AI response sent back to Express</text>
+
+  <!-- ============================================ -->
+  <!-- STEP 5: RESPONSE BACK TO FARMER -->
+  <!-- ============================================ -->
+  <rect x="50" y="715" width="110" height="26" rx="13" fill="#8b5cf620" stroke="#8b5cf640" stroke-width="1"/>
+  <text x="105" y="733" text-anchor="middle" fill="#a78bfa" font-size="11" font-weight="600">STEP 5: RESPONSE</text>
+
+  <rect x="50" y="230" width="240" height="100" rx="12" fill="#1e293b" stroke="#8b5cf640" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="170" y="258" text-anchor="middle" fill="#a78bfa" font-size="14" font-weight="700">Farmer Receives Response</text>
+  <text x="170" y="280" text-anchor="middle" fill="#94a3b8" font-size="11">"Beans: UGX 3,200/kg"</text>
+  <text x="170" y="298" text-anchor="middle" fill="#94a3b8" font-size="11">"Buyers: A (3,100), B (3,150)"</text>
+  <text x="170" y="318" text-anchor="middle" fill="#64748b" font-size="10">Reply 1 to accept offer</text>
+
+  <!-- Arrow: Backend → Farmer -->
+  <path d="M 300 180 Q 300 280 290 280" fill="none" stroke="#fbbf24" stroke-width="2.5" marker-end="url(#arrAmber)" stroke-dasharray="8,4" filter="url(#glow)"/>
+
+  <!-- ============================================ -->
+  <!-- TIMING / METRICS SIDEBAR -->
+  <!-- ============================================ -->
+  <rect x="50" y="750" width="1100" height="130" rx="12" fill="#1e293b40" stroke="#334155" stroke-width="1"/>
+  <text x="80" y="778" fill="#94a3b8" font-size="12" font-weight="600">PERFORMANCE METRICS</text>
+
+  <rect x="80" y="790" width="200" height="70" rx="8" fill="#0f172a" stroke="#05966940" stroke-width="1"/>
+  <text x="180" y="815" text-anchor="middle" fill="#34d399" font-size="18" font-weight="700">< 2s</text>
+  <text x="180" y="835" text-anchor="middle" fill="#64748b" font-size="10">Avg. Response Time</text>
+  <text x="180" y="850" text-anchor="middle" fill="#64748b" font-size="9">Farmer → AI → Farmer</text>
+
+  <rect x="300" y="790" width="200" height="70" rx="8" fill="#0f172a" stroke="#3b82f640" stroke-width="1"/>
+  <text x="400" y="815" text-anchor="middle" fill="#60a5fa" font-size="18" font-weight="700">3</text>
+  <text x="400" y="835" text-anchor="middle" fill="#64748b" font-size="10">USSD Session Steps</text>
+  <text x="400" y="850" text-anchor="middle" fill="#64748b" font-size="9">Dial → Input → Response</text>
+
+  <rect x="520" y="790" width="200" height="70" rx="8" fill="#0f172a" stroke="#f59e0b40" stroke-width="1"/>
+  <text x="620" y="815" text-anchor="middle" fill="#fbbf24" font-size="18" font-weight="700">2</text>
+  <text x="620" y="835" text-anchor="middle" fill="#64748b" font-size="10">AI Tool Calls</text>
+  <text x="620" y="850" text-anchor="middle" fill="#64748b" font-size="9">Price + Buyer lookup</text>
+
+  <rect x="740" y="790" width="200" height="70" rx="8" fill="#0f172a" stroke="#8b5cf640" stroke-width="1"/>
+  <text x="840" y="815" text-anchor="middle" fill="#a78bfa" font-size="18" font-weight="700">140</text>
+  <text x="840" y="835" text-anchor="middle" fill="#64748b" font-size="10">Max Characters</text>
+  <text x="840" y="850" text-anchor="middle" fill="#64748b" font-size="9">USSD response limit</text>
+
+  <rect x="960" y="790" width="170" height="70" rx="8" fill="#0f172a" stroke="#10b98140" stroke-width="1"/>
+  <text x="1045" y="815" text-anchor="middle" fill="#34d399" font-size="18" font-weight="700">99.9%</text>
+  <text x="1045" y="835" text-anchor="middle" fill="#64748b" font-size="10">Uptime</text>
+  <text x="1045" y="850" text-anchor="middle" fill="#64748b" font-size="9">Render + QwenCloud</text>
+
+  <!-- Legend -->
+  <text x="600" y="895" text-anchor="middle" fill="#475569" font-size="9">SokoAgent AI v1.0 — End-to-End Process Flow — QwenCloud + Express.js + Africa's Talking</text>
+</svg>
