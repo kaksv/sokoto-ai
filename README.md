@@ -4,7 +4,7 @@
 
 SokoAgent AI eliminates middleman exploitation by connecting smallholder farmers directly to fair markets through a simple USSD interface — no smartphone required. Just dial `*347*1#`, get AI-powered price insights, and sell at fair value.
 
-Built for the **QwenCloud Global AI Hackathon 2026**.
+Built during the **QwenCloud Global AI Hackathon 2026**.
 
 ---
 
@@ -183,7 +183,6 @@ text=
 CON Welcome to SokoAgent AI!
 1. Sell Produce
 2. Check Market Prices
-3. My USDT Wallet
 ```
 
 ---

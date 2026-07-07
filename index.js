@@ -24,8 +24,7 @@ app.post('/ussd', async (req, res) => {
             
             let response = `CON Welcome to SokoAgent AI!\n`;
             response += `1. Sell Produce\n`;
-            response += `2. Check Market Prices\n`;
-            response += `3. My USDT Wallet`;
+            response += `2. Check Market Prices`;
             res.set('Content-Type', 'text/plain');
             res.status(200).send(response);
         }
