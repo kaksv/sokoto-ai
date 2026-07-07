@@ -58,6 +58,15 @@ const flowSteps = [
 ]
 
 export default function Architecture() {
+  const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = '/architecture-diagram.svg';
+    link.download = 'sokoagent-architecture.svg';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <section id="architecture" className="relative py-24 overflow-hidden">
       {/* Background */}
@@ -88,6 +97,37 @@ export default function Architecture() {
           <p className="text-gray-400 max-w-2xl mx-auto text-lg">
             A four-layer architecture that connects farmers to AI-powered market intelligence through the simplest possible interface.
           </p>
+        </motion.div>
+
+        {/* Architecture Diagram Image */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-12"
+        >
+          <div className="bg-gray-900/30 border border-gray-800 rounded-2xl p-6 hover:border-emerald-500/30 transition-all duration-300">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-bold text-white">Full System Architecture</h3>
+              <button
+                onClick={handleDownload}
+                className="flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-lg text-emerald-400 text-sm font-medium hover:bg-emerald-500/20 transition-all"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                Download SVG
+              </button>
+            </div>
+            <div className="bg-gray-950 rounded-xl overflow-hidden border border-gray-800/50">
+              <img
+                src="/architecture-diagram.svg"
+                alt="SokoAgent AI System Architecture"
+                className="w-full h-auto"
+                style={{ minHeight: '400px' }}
+              />
+            </div>
+          </div>
         </motion.div>
 
         {/* Architecture Layers */}
@@ -143,7 +183,7 @@ export default function Architecture() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-gray-900/30 border border-gray-800 rounded-2xl p-8"
+          className="bg-gray-900/30 border border-gray-800 rounded-2xl p-8 mb-12"
         >
           <h3 className="text-xl font-bold text-white mb-6 text-center">Request Flow</h3>
           <div className="grid grid-cols-2 md:grid-cols-6 gap-3">
